@@ -1,3 +1,4 @@
+
 name: Deploy to Dev2
 
 on:
@@ -18,7 +19,7 @@ jobs:
         with:
           host: 40.81.228.37
           username: azureuser
-          password: ${{ secrets.DEV2_SSH_KEY }}
+          key: ${{ secrets.DEV2_SSH_KEY }}
           script: |
             cd ~/git-test3
             git pull origin main
