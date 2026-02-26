@@ -1,0 +1,26 @@
+name: Deploy to Dev2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 40.81.228.37
+          username: dev2
+          key: ${{ secrets.DEV2_SSH_KEY }}
+          script: |
+            cd ~/git--test2
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
