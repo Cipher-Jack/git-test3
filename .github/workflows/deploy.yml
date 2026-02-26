@@ -17,7 +17,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 40.81.228.37
-          username: dev2
+          username: azureuser
           password: ${{ secrets.DEV2_SSH_KEY }}
           script: |
             cd ~/git-test3
